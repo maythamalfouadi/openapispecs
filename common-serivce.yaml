@@ -1,4 +1,4 @@
-openapi: 3.0.1
+openapi: "3.0.1"
 info:
   title: Common Services REST API Documentation
   description: Common services acts as a single source of master data. It stands on top of basic REST API's discussed below.
