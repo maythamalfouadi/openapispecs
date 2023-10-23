@@ -32056,13 +32056,6 @@ definitions:
           $ref: '#/definitions/SupplierAssociationDetail'
         type: object
     type: object
-  CachedShiftDetail:
-    properties:
-      endTime:
-        $ref: '#/definitions/LocalTime'
-      startTime:
-        $ref: '#/definitions/LocalTime'
-    type: object
   CalculatedCapacityRangeCostResponse:
     description: Capacity range cost.
     example:
