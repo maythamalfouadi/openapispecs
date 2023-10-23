@@ -31970,27 +31970,6 @@ definitions:
           - ACTIVE
         type: string
     type: object
-  CachedCalendarDetail:
-    properties:
-      calendarId:
-        type: string
-      enabled:
-        type: boolean
-      overrideDaysDetails:
-        additionalProperties:
-          prefixItems:
-            $ref: '#/definitions/CachedShiftDetail'
-          type: array
-          uniqueItems: true
-        type: object
-      regularWeekShiftDetails:
-        additionalProperties:
-          prefixItems:
-            $ref: '#/definitions/CachedShiftDetail'
-          type: array
-          uniqueItems: true
-        type: object
-    type: object
   CachedItemAssociationSubstitutionAggregatedValue:
     properties:
       itemAssociationSubstitution:
@@ -37440,8 +37419,6 @@ definitions:
         type: boolean
       inboundProcessingTime:
         $ref: '#/definitions/CachedMinMaxDetail'
-      inboundWorkingCalendar:
-        $ref: '#/definitions/CachedCalendarDetail'
       locationProcessingTime:
         $ref: '#/definitions/CachedMinMaxDetail'
       meta:
@@ -37450,8 +37427,6 @@ definitions:
         type: object
       outboundProcessingTime:
         $ref: '#/definitions/CachedMinMaxDetail'
-      outboundWorkingCalendar:
-        $ref: '#/definitions/CachedCalendarDetail'
       temporaryDisableExpirationTime:
         format: date-time
         type: string
