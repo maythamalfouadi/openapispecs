@@ -31978,14 +31978,14 @@ definitions:
         type: boolean
       overrideDaysDetails:
         additionalProperties:
-          items:
+          prefixItems:
             $ref: '#/definitions/CachedShiftDetail'
           type: array
           uniqueItems: true
         type: object
       regularWeekShiftDetails:
         additionalProperties:
-          items:
+          prefixItems:
             $ref: '#/definitions/CachedShiftDetail'
           type: array
           uniqueItems: true
