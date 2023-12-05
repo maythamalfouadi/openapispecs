@@ -1,0 +1,165 @@
+openapi: 3.0.1
+info:
+  title: go-api
+  description: API for Nat-Dev's needs
+  termsOfService: http://swagger.io/terms/
+  contact:
+    name: API Support
+    url: https://gitlab.aldidevops.com
+    email: apps@aldi.us
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: ""
+servers:
+- url: //go-api.loc/api/v1
+paths:
+  /catfact/getfact:
+    get:
+      tags:
+      - catfact
+      summary: get a random cat fact
+      description: get a random cat fact
+      responses:
+        "200":
+          description: response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/model.CatFact'
+        "400":
+          description: error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/model.Message'
+  /health/gethealth:
+    get:
+      tags:
+      - health
+      summary: Generate Health status
+      description: Get the health of the API
+      responses:
+        "200":
+          description: response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/model.Message'
+        "400":
+          description: error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/model.Message'
+  /jokes/dadjoke:
+    get:
+      tags:
+      - dadjoke
+      summary: Get dadjoke
+      description: get a dad joke
+      responses:
+        "200":
+          description: response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/model.Message'
+        "500":
+          description: error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/model.Message'
+    post:
+      tags:
+      - dadjoke
+      summary: Generate dadjoke
+      description: create a dad joke
+      parameters:
+      - name: joke
+        in: query
+        description: Dad Joke you wish to enter into database
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/model.Message'
+        "500":
+          description: error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/model.Message'
+    delete:
+      tags:
+      - dadjoke
+      summary: Generate dadjoke
+      description: create a dad joke
+      parameters:
+      - name: joke
+        in: query
+        description: Dad joke you wish to delete from the database
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/model.Message'
+        "500":
+          description: error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/model.Message'
+  /openai/general:
+    get:
+      tags:
+      - openai
+      summary: Gerneral ChatGPT
+      description: Ask ChatGPT a general question
+      parameters:
+      - name: message
+        in: query
+        description: Ask ChatGPT a general question
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/model.Message'
+        "400":
+          description: error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/model.Message'
+components:
+  schemas:
+    model.CatFact:
+      type: object
+      properties:
+        fact:
+          type: string
+        leangth:
+          type: integer
+    model.Message:
+      type: object
+      properties:
+        message:
+          type: string
+          example: message
+x-original-swagger-version: "2.0"
