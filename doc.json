@@ -1,0 +1,242 @@
+{
+    "schemes": [],
+    "swagger": "2.0",
+    "info": {
+        "description": "API for Nat-Dev's needs",
+        "title": "go-api",
+        "termsOfService": "http://swagger.io/terms/",
+        "contact": {
+            "name": "API Support",
+            "url": "https://gitlab.aldidevops.com",
+            "email": "apps@aldi.us"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": ""
+    },
+    "host": "go-api.loc",
+    "basePath": "/api/v1",
+    "paths": {
+        "/catfact/getfact": {
+            "get": {
+                "description": "get a random cat fact",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "catfact"
+                ],
+                "summary": "get a random cat fact",
+                "responses": {
+                    "200": {
+                        "description": "response",
+                        "schema": {
+                            "$ref": "#/definitions/model.CatFact"
+                        }
+                    },
+                    "400": {
+                        "description": "error",
+                        "schema": {
+                            "$ref": "#/definitions/model.Message"
+                        }
+                    }
+                }
+            }
+        },
+        "/health/gethealth": {
+            "get": {
+                "description": "Get the health of the API",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "health"
+                ],
+                "summary": "Generate Health status",
+                "responses": {
+                    "200": {
+                        "description": "response",
+                        "schema": {
+                            "$ref": "#/definitions/model.Message"
+                        }
+                    },
+                    "400": {
+                        "description": "error",
+                        "schema": {
+                            "$ref": "#/definitions/model.Message"
+                        }
+                    }
+                }
+            }
+        },
+        "/jokes/dadjoke": {
+            "get": {
+                "description": "get a dad joke",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "dadjoke"
+                ],
+                "summary": "Get dadjoke",
+                "responses": {
+                    "200": {
+                        "description": "response",
+                        "schema": {
+                            "$ref": "#/definitions/model.Message"
+                        }
+                    },
+                    "500": {
+                        "description": "error",
+                        "schema": {
+                            "$ref": "#/definitions/model.Message"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "create a dad joke",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "dadjoke"
+                ],
+                "summary": "Generate dadjoke",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Dad Joke you wish to enter into database",
+                        "name": "joke",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "response",
+                        "schema": {
+                            "$ref": "#/definitions/model.Message"
+                        }
+                    },
+                    "500": {
+                        "description": "error",
+                        "schema": {
+                            "$ref": "#/definitions/model.Message"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "create a dad joke",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "dadjoke"
+                ],
+                "summary": "Generate dadjoke",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Dad joke you wish to delete from the database",
+                        "name": "joke",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "response",
+                        "schema": {
+                            "$ref": "#/definitions/model.Message"
+                        }
+                    },
+                    "500": {
+                        "description": "error",
+                        "schema": {
+                            "$ref": "#/definitions/model.Message"
+                        }
+                    }
+                }
+            }
+        },
+        "/openai/general": {
+            "get": {
+                "description": "Ask ChatGPT a general question",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "openai"
+                ],
+                "summary": "Gerneral ChatGPT",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Ask ChatGPT a general question",
+                        "name": "message",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "response",
+                        "schema": {
+                            "$ref": "#/definitions/model.Message"
+                        }
+                    },
+                    "400": {
+                        "description": "error",
+                        "schema": {
+                            "$ref": "#/definitions/model.Message"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "model.CatFact": {
+            "type": "object",
+            "properties": {
+                "fact": {
+                    "type": "string"
+                },
+                "leangth": {
+                    "type": "integer"
+                }
+            }
+        },
+        "model.Message": {
+            "type": "object",
+            "properties": {
+                "message": {
+                    "type": "string",
+                    "example": "message"
+                }
+            }
+        }
+    }
+}
