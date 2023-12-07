@@ -14,7 +14,7 @@
             "name": "Apache 2.0",
             "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
         },
-        "version": "2.0.0"
+        "version": ""
     },
     "host": "go-api.loc",
     "basePath": "/api/v1",
